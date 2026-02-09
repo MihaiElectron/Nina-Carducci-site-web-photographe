@@ -1,18 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="./assets/style.css">
+
+    <!-- 
+        BOOTSTRAP CSS — OPTIMISÉ AVEC PRELOAD
+        Le CSS est normalement "render-blocking" : le navigateur doit le télécharger
+        et l'analyser AVANT d'afficher la page. Cela ralentit le LCP.
+
+        En utilisant rel="preload", on demande au navigateur de télécharger le CSS
+        en priorité, SANS bloquer le rendu. 
+        Quand le fichier est chargé, on transforme preload → stylesheet via onload.
+        
+        Le <noscript> garantit que les utilisateurs sans JS ont quand même le CSS.
+    -->
+    <link rel="preload" href="./assets/bootstrap/bootstrap.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./assets/bootstrap/bootstrap.css"></noscript>
+
+    <!-- 
+        STYLE.CSS — MÊME OPTIMISATION QUE BOOTSTRAP
+        On applique la même technique pour ton CSS custom.
+        Résultat : aucun CSS ne bloque le rendu initial.
+    -->
+    <link rel="preload" href="./assets/style.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./assets/style.css"></noscript>
+
+    <!-- 
+        GOOGLE FONTS — OPTIMISATION COMPLÈTE
+        1) preconnect : on ouvre la connexion AVANT d'en avoir besoin
+           → réduit la latence DNS + TLS
+        2) preload : on télécharge la feuille de style des fonts sans bloquer le rendu
+        3) display=swap : évite le "flash invisible" (FOIT)
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <script src="./assets/bootstrap/bootstrap.bundle.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="./assets/maugallery.js"></script>
-    <script src="./assets/scripts.js"></script>
+    <link rel="preload" 
+          href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap" 
+          as="style" 
+          onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" 
+              href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap">
+    </noscript>
+
+    <!-- 
+        JQUERY — CHARGÉ AVEC DEFER
+        jQuery n'est pas un module ES6, donc on NE DOIT PAS utiliser type="module".
+        defer permet :
+        - téléchargement en parallèle
+        - exécution APRÈS le HTML
+        - respect de l'ordre entre scripts
+        - pas de blocage du rendu
+    -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous" defer></script>
+
+    <!-- 
+        BOOTSTRAP JS — NÉCESSAIRE POUR LE CAROUSEL
+        Bootstrap.bundle.js contient Popper + les composants JS.
+        Il n'est pas compatible ES modules → on utilise defer.
+        Le carousel Bootstrap dépend de ce fichier.
+    -->
+    <script src="./assets/bootstrap/bootstrap.bundle.js" defer></script>
+
+    <!-- 
+        MAUGALLERY — DÉPEND DE JQUERY
+        Ce plugin utilise jQuery → il doit être chargé APRÈS jQuery.
+        defer garantit l'ordre d'exécution.
+    -->
+    <script src="./assets/maugallery.js" defer></script>
+
+    <!-- 
+        SCRIPTS.JS — SCRIPT PERSONNEL
+        Il dépend de jQuery et de maugallery.
+        defer garantit que :
+        1) le HTML est chargé
+        2) jQuery est chargé
+        3) maugallery est chargé
+        4) puis ton script s'exécute
+    -->
+    <script src="./assets/scripts.js" defer></script>
 </head>
+
 
 <body>
 <div class="top-header">
@@ -43,28 +112,39 @@
         </div>
 
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img 
-                    src="./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash.jpg"
-                    srcset="./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash.avif 1x,
-                            ./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash.webp 1x"
-                    class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img 
-                    src="./assets/images/slider/nicholas-green-nPz8akkUmDI-unsplash.jpg"
-                    srcset="./assets/images/slider/nicholas-green-nPz8akkUmDI-unsplash.avif 1x,
-                            ./assets/images/slider/nicholas-green-nPz8akkUmDI-unsplash.webp 1x"
-                    class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img 
-                    src="./assets/images/slider/edward-cisneros-3_h6-1NPDGw-unsplash.jpg"
-                    srcset="./assets/images/slider/edward-cisneros-3_h6-1NPDGw-unsplash.avif 1x,
-                            ./assets/images/slider/edward-cisneros-3_h6-1NPDGw-unsplash.webp 1x"
-                    class="d-block w-100" alt="...">
-            </div>
-        </div>
+          <div class="carousel-item active">
+            <!-- fetchpriority="high" indique au navigateur que cette image est prioritaire.
+            Cela accélère le Largest Contentful Paint (LCP) et améliore le score Lighthouse.
+            À utiliser uniquement sur l’image visible au chargement (slide actif). -->
+            <img 
+            src="./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash.jpg"
+            srcset="./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash.avif 1x,
+                    ./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash.webp 1x"
+            class="d-block w-100"
+            fetchpriority="high"
+            alt="Photographie urbaine de Ryoji Iwata">
+ 
+          </div>
+      
+          <div class="carousel-item">
+              <img 
+                  src="./assets/images/slider/nicholas-green-nPz8akkUmDI-unsplash.jpg"
+                  srcset="./assets/images/slider/nicholas-green-nPz8akkUmDI-unsplash.avif 1x,
+                          ./assets/images/slider/nicholas-green-nPz8akkUmDI-unsplash.webp 1x"
+                  class="d-block w-100"
+                  alt="Portrait de Nicholas Green">
+          </div>
+      
+          <div class="carousel-item">
+              <img 
+                  src="./assets/images/slider/edward-cisneros-3_h6-1NPDGw-unsplash.jpg"
+                  srcset="./assets/images/slider/edward-cisneros-3_h6-1NPDGw-unsplash.avif 1x,
+                          ./assets/images/slider/edward-cisneros-3_h6-1NPDGw-unsplash.webp 1x"
+                  class="d-block w-100"
+                  alt="Photo de mariage par Edward Cisneros">
+          </div>
+      </div>
+      
 
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -81,7 +161,7 @@
 <div id="about">
     <div class="picture left">
         <!-- PNG : pas de srcset -->
-        <img src="./assets/images/nina.png">
+        <img src="./assets/images/nina.avif">
     </div>
 
     <div id="about-me">
@@ -223,7 +303,7 @@
 
         <div class="picture right">
             <!-- PNG : pas de srcset -->
-            <img src="./assets/images/camera.png">
+            <img src="./assets/images/camera.avif">
         </div>
     </div>
 </div>
