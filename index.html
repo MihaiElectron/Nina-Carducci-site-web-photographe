@@ -33,7 +33,7 @@
     -->
     <meta property="og:title" content="Nina Carducci – Photographe professionnelle à Bordeaux">
     <meta property="og:description" content="Découvrez mes portraits, mariages, concerts et reportages professionnels.">
-    <meta property="og:image" content="https://www.ninacarducci.com/assets/images/preview.jpg">
+    <meta property="og:image" content="https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/preview.jpg">
     <meta property="og:url" content="https://www.ninacarducci.com/">
     <meta property="og:type" content="website">
 
@@ -48,7 +48,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nina Carducci – Photographe professionnelle à Bordeaux">
     <meta name="twitter:description" content="Découvrez mes portraits, mariages, concerts et reportages professionnels.">
-    <meta name="twitter:image" content="https://www.ninacarducci.com/assets/images/preview.jpg">
+    <meta name="twitter:image" content="https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/preview.jpg">
 
     <!-- 
         BOOTSTRAP CSS — OPTIMISÉ AVEC PRELOAD
@@ -59,10 +59,15 @@
         en priorité, SANS bloquer le rendu. 
         Quand le fichier est chargé, on transforme preload → stylesheet via onload.
         
+        Version utilisée :
+        - bootstrap.css → version lisible (développement / debug)
+        - bootstrap.min.css → version minifiée (production / optimisation performance)
+
         Le <noscript> garantit que les utilisateurs sans JS ont quand même le CSS.
     -->
-    <link rel="preload" href="./assets/bootstrap/bootstrap.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="./assets/bootstrap/bootstrap.css"></noscript>
+    <link rel="preload" href="./assets/bootstrap/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css"></noscript>
+
 
     <!-- 
         STYLE.CSS — MÊME OPTIMISATION QUE BOOTSTRAP
@@ -103,11 +108,17 @@
 
     <!-- 
         BOOTSTRAP JS — NÉCESSAIRE POUR LE CAROUSEL
-        Bootstrap.bundle.js contient Popper + les composants JS.
-        Il n'est pas compatible ES modules → on utilise defer.
+        Bootstrap.bundle contient Popper + les composants JS Bootstrap.
+        
+        Version utilisée :
+        - bootstrap.bundle.js → version lisible (développement / debug)
+        - bootstrap.bundle.min.js → version minifiée (production / optimisation performance)
+
+        Le fichier n'est pas compatible ES modules → on utilise defer.
         Le carousel Bootstrap dépend de ce fichier.
     -->
-    <script src="./assets/bootstrap/bootstrap.bundle.js" defer></script>
+    <script src="./assets/bootstrap/bootstrap.bundle.min.js" defer></script>
+
 
     <!-- 
         MAUGALLERY — DÉPEND DE JQUERY
