@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!-- Lighthouse: manque l’attribut lang pour l’accessibilité et le SEO -->
 <head>
     <!-- Audit SEO : Absence de balise <title>. Impact : le moteur de recherche ne peut pas identifier le sujet principal de la page. -->
     <!-- Audit SEO : Absence de meta description. Impact : extrait non optimisé dans les résultats de recherche. -->
@@ -27,6 +28,7 @@
 
 <body>
 <div class="top-header">
+    <!-- Accessibilité: manque un landmark <main> -->
     <!-- Audit SEO : Le nom de la photographe devrait être intégré dans un <h1> pour structurer correctement la page. -->
     <h3 class="name">Nina Carducci</h3>
 
