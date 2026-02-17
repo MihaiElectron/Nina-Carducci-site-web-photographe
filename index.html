@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <!-- 
         SEO — META DESCRIPTION
         Cette balise est essentielle pour le référencement.
@@ -12,6 +13,7 @@
     -->
     <meta name="description" content="Photographe professionnelle à Bordeaux, Nina Carducci réalise portraits, photos de mariage, reportages d’entreprise et shootings artistiques. Découvrez son portfolio et ses services.">
 
+
     <!-- 
         SEO — CANONICAL URL
         Indique à Google l’URL principale de la page pour éviter le contenu dupliqué.
@@ -19,6 +21,7 @@
         À modifier si l’URL finale du site change.
     -->
     <link rel="canonical" href="https://mihaielectron.github.io/Nina-Carducci-site-web-photographe">
+
 
     <!-- 
         OPEN GRAPH — APERÇU POUR LES RÉSEAUX SOCIAUX
@@ -37,6 +40,7 @@
     <meta property="og:url" content="https://mihaielectron.github.io/Nina-Carducci-site-web-photographe>
     <meta property="og:type" content="website">
 
+
     <!-- 
         TWITTER CARDS — APERÇU POUR TWITTER/X
         Twitter utilise son propre format, mais lit aussi Open Graph.
@@ -49,6 +53,7 @@
     <meta name="twitter:title" content="Nina Carducci – Photographe professionnelle à Bordeaux">
     <meta name="twitter:description" content="Découvrez mes portraits, mariages, concerts et reportages professionnels.">
     <meta name="twitter:image" content="https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/preview.jpg">
+
 
     <!-- 
         BOOTSTRAP CSS — OPTIMISÉ AVEC PRELOAD
@@ -77,6 +82,7 @@
     <link rel="preload" href="./assets/style.css" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="./assets/style.css"></noscript>
 
+
     <!-- 
         GOOGLE FONTS — OPTIMISATION COMPLÈTE
         1) preconnect : on ouvre la connexion AVANT d'en avoir besoin
@@ -95,6 +101,7 @@
               href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap">
     </noscript>
 
+
     <!-- 
         JQUERY — CHARGÉ AVEC DEFER
         jQuery n'est pas un module ES6, donc on NE DOIT PAS utiliser type="module".
@@ -105,6 +112,7 @@
         - pas de blocage du rendu
     -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous" defer></script>
+
 
     <!-- 
         BOOTSTRAP JS — NÉCESSAIRE POUR LE CAROUSEL
@@ -127,6 +135,7 @@
     -->
     <script src="./assets/maugallery.js" defer></script>
 
+
     <!-- 
         SCRIPTS.JS — SCRIPT PERSONNEL
         Il dépend de jQuery et de maugallery.
@@ -138,36 +147,41 @@
     -->
     <script src="./assets/scripts.js" defer></script>
 
+
     <!-- 
         SCHEMA.ORG — AJOUT SEO STRUCTURÉ
         Ces données aident Google à comprendre l'identité et l'activité.
-        Elles sont conservées comme demandé.
+        Stratégie : 
+          1. LocalBusiness pour présenter l'entreprise globalement.
+          2. Product/Offer pour mettre en avant un prix attractif et inciter à visiter la page prestations.
+            - Prix affiché = 50€ (prix d'appel) pour inciter le visiteur au CTA (Call To).
+          3. priceRange indicatif (€€) pour montrer le niveau de prix général.
     -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Nina Carducci",
-      "jobTitle": "Photographe professionnelle",
-      "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.avif",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "68 avenue Alsace-Lorraine",
-        "postalCode": "33200",
-        "addressLocality": "Bordeaux",
-        "addressCountry": "FR"
-      },
-      "telephone": "05 56 67 78 89",
-      "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nina Carducci",
+        "jobTitle": "Photographe professionnelle",
+        "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.v1.avif",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "68 avenue Alsace-Lorraine",
+          "postalCode": "33200",
+          "addressLocality": "Bordeaux",
+          "addressCountry": "FR"
+        },
+        "telephone": "05 56 67 78 89",
+        "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
+      }
     </script>
-
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Nina Carducci Photographe",
-      "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.avif",
+      "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.v1.avif",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "68 avenue Alsace-Lorraine",
@@ -177,8 +191,24 @@
       },
       "telephone": "05 56 67 78 89",
       "openingHours": "Mo-Fr 10:00-19:00",
-      "priceRange": "€€",
+      "priceRange": "€€", 
       "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Séance portrait studio",
+      "description": "Séance photo professionnelle en studio, idéale pour portraits ou book.",
+      "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.v1.avif",
+      "offers": {
+        "@type": "Offer",
+        "price": "50",
+        "priceCurrency": "EUR",
+        "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
+      }
     }
     </script>
 
