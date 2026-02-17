@@ -152,10 +152,13 @@
         SCHEMA.ORG — AJOUT SEO STRUCTURÉ
         Ces données aident Google à comprendre l'identité et l'activité.
         Stratégie : 
-          1. LocalBusiness pour présenter l'entreprise globalement.
-          2. Product/Offer pour mettre en avant un prix attractif et inciter à visiter la page prestations.
-            - Prix affiché = 50€ (prix d'appel) pour inciter le visiteur au CTA (Call To).
-          3. priceRange indicatif (€€) pour montrer le niveau de prix général.
+          1. Person pour identifier le professionnel (Nina Carducci) et son rôle.
+          2. LocalBusiness pour présenter l'entreprise globalement.
+          3. Product/Offer pour décrire les services proposés avec prix et disponibilité. 
+            - Chaque service (Retouches, Shooting, Album) est représenté comme Product.
+            - Les champs review et aggregateRating sont inclus à titre d'exemple pédagogique pour Rich Snippets.
+          4. priceRange indicatif (€€) pour montrer le niveau de prix général.
+          5. L'ensemble est structuré pour être cohérent avec le site et optimiser l'affichage dans les résultats enrichis.
     -->
     <script type="application/ld+json">
       {
@@ -197,20 +200,98 @@
     </script>
     
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Séance portrait studio",
-      "description": "Séance photo professionnelle en studio, idéale pour portraits ou book.",
-      "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.v1.avif",
-      "offers": {
-        "@type": "Offer",
-        "price": "50",
-        "priceCurrency": "EUR",
-        "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Retouches photo",
+        "description": "Retouches professionnelles pour un rendu optimal de vos photos, prêt à publication.",
+        "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.v1.avif",
+        "offers": {
+          "@type": "Offer",
+          "price": "50",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "10"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Client Exemple" },
+            "datePublished": "2025-11-01",
+            "reviewBody": "Super retouches, rendu très professionnel !",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Shooting photo",
+        "description": "Capturer vos moments les plus précieux, déplacement inclus.",
+        "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.v1.avif",
+        "offers": {
+          "@type": "Offer",
+          "price": "350",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "5"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Client Exemple" },
+            "datePublished": "2025-11-02",
+            "reviewBody": "Super séance photo, très professionnel !",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Album photo",
+        "description": "Album photo A4 30 pages pour partager vos souvenirs.",
+        "image": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe/assets/images/nina.v1.avif",
+        "offers": {
+          "@type": "Offer",
+          "price": "400",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://mihaielectron.github.io/Nina-Carducci-site-web-photographe"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "7"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Client Exemple" },
+            "datePublished": "2025-11-03",
+            "reviewBody": "Album magnifique, très soigné et complet !",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+          }
+        ]
       }
-    }
+    ]
     </script>
+      
+      
 
     <title>Nina Carducci – Photographe professionnelle à Bordeaux</title>
 
