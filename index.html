@@ -311,7 +311,7 @@
       Cette balise n’améliore pas directement le référencement,
       mais elle permet d’obtenir les données nécessaires pour optimiser le SEO.
     -->
-    <meta name="google-site-verification" content="RA7hdhmwafJt5QSCwA3ovXuKEE54Gz6WN8gn62natNw" />
+    <meta name="google-site-verification" content="RA7hdhmwafJt5QSCwA3ovXuKEE54Gz6WN8gn62natNw" >
 
 </head>
 
@@ -323,11 +323,11 @@
     Ajout de <header> + rôle explicite
     Le nom du site devient le H1 principal
 -->
-<header class="top-header" role="banner">
+<header class="top-header">
     <h1 class="name">Nina Carducci</h1>
 
     <div class="nav">
-        <nav role="navigation" aria-label="Navigation principale">
+        <nav aria-label="Navigation principale">
             <ul>
                 <li><a href="#about">À propos</a></li>
                 <li><a href="#gallery">Galerie</a></li>
@@ -348,10 +348,10 @@
     MAIN — LANDMARK PRINCIPAL
     Améliore la navigation clavier et l'accessibilité
 -->
-<main role="main">
+<main>
 
 <div id="header">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" aria-label="Diaporama">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" role="region" aria-label="Diaporama">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                 aria-current="true"
@@ -571,7 +571,6 @@
         </blockquote>
         <figcaption class="quote__author">- Richard Avedon</figcaption>
       </figure>
-    </div>
 </div>
 
 <div id="contact">
@@ -588,7 +587,7 @@
                 - Champs correctement associés
                 - Structure conforme WAVE
             -->
-            <form action="" method="post">
+            <form method="post">
                 <label for="nom">Nom</label>
                 <input type="text" name="nom" id="nom">
 
@@ -598,7 +597,7 @@
                 <label for="message">Message</label>
                 <textarea name="message" id="message" cols="30" rows="10"></textarea>
 
-                <input type="submit" value="Envoyer"/>
+                <input type="submit" value="Envoyer">
             </form>
         </div>
 
@@ -615,7 +614,7 @@
     FOOTER — LANDMARK ACCESSIBLE
     Ajout d’un footer pour clore la structure sémantique
 -->
-<footer role="contentinfo" style="text-align:center; padding:2em 0;">
+<footer style="text-align:center; padding:2em 0;">
     <p>© 2024 Nina Carducci — Photographe professionnelle à Bordeaux</p>
 </footer>
 
